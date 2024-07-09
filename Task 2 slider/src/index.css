@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.search-input {
+  width: 200px; /* set a fixed width */
+  max-width: 100%; /* set a max-width to prevent it from growing beyond the parent container */
+}
+
+.search-button {
+  width: 40px; /* set a fixed width for the button */
+}
