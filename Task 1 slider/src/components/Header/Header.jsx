@@ -6,13 +6,14 @@ import { BiCartAlt } from "react-icons/bi";
 export default function Header({ onShowReview }) {
   const navigate = useNavigate();
 
+  //Login page
   const handleUserClick = () => {
-    navigate("/login"); // Navigate to the login page
+    navigate("/login"); 
   };
-
+//review page
   const handleShowReview = () => {
     onShowReview();
-    window.location.hash = '#review'; // Scroll to the review section
+    window.location.hash = '#review'; 
   };
 
   return (

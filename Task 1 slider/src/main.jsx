@@ -9,7 +9,7 @@ import Contact from './components/Contact/Contact.jsx';
 import Login from './components/login/login.jsx';
 
 
-//  way to implement route
+// implement route
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>

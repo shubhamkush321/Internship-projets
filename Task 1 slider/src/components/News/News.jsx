@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function News() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isVoucherVisible, setIsVoucherVisible] = useState(false);
   const formRef = useRef(null);
 
   const closeModal = () => setIsModalOpen(false);
@@ -37,7 +36,7 @@ function News() {
             setTimeout(() => {
               setIsVoucherVisible(false);
               closeModal();
-            }, 5000); // Close voucher card and modal after 5 seconds
+            }, 5000); 
           })
           .catch((error) => {
             console.error("Error!", error.message);
@@ -119,15 +118,6 @@ function News() {
               </form>
             </div>
           </div>
-        </div>
-      )}
-
-      {/* Voucher Card */}
-      {isVoucherVisible && (
-        <div className="voucher-card">
-          <h3>Congratulations!</h3>
-          <p>Here is your discount coupon:</p>
-          <div className="coupon-code">DISCOUNT2024</div>
         </div>
       )}
     </div>
