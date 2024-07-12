@@ -4,18 +4,17 @@ import Logo from './Logo';
 import { FaRegUser } from "react-icons/fa";
 import { BiCartAlt } from "react-icons/bi";
 import { FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-// const navigate = useNavigate();
-// const handleUserClick = () => {
-//   navigate("/login"); 
-// };
 
-function Header() {
+const Header = () => {
   return (
-    <header className='h-16 shadow-sm'>
+    <header className='h-16 shadow-sm bg-white'>
       <div className=' h-full container mx-auto flex items-center px-4 justify-between'>
         <div className=''>
-          <Logo />
+          <Link to={"/"}>
+            <Logo />
+          </Link>
         </div>
 
         <div className='hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow-lg pl-3'>
@@ -26,11 +25,12 @@ function Header() {
         </div>
 
         <div className="flex items-center gap-3 relative">
-          <button className='px-3 py-1 rounded-full bg-cyan-600'>Login</button>
+
+          <Link to={"/login"} className='px-3 py-1 rounded-full bg-sky-100 hover:bg-blue-400'>Login</Link>
+
           <FaRegUser
             size={18}
             className="text-gray-800 hover:text-orange-700 cursor-pointer mr-2"
-          // onClick={handleUserClick} 
           />
           <BiCartAlt
             size={22}
