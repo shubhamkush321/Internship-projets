@@ -213,9 +213,10 @@ body.dark {
   cursor: pointer;
   border-radius: 30px;
   background-color: var(--bg-color);
+  padding-left: 2rem;
 }
 .card-bottom label:hover {
-  color: var(--primary-text-color);
+  color: white;
   background-color: var(--primary-color);
 }
 .card-bottom span {
@@ -241,9 +242,10 @@ body.dark {
   color: var(--text-color);
   cursor: pointer;
   background-color: var(--bg-color);
+  padding-left: 2rem;
 }
 .card-bottom button:hover {
-  color: var(--primary-text-color);
+  color: white;
   background-color: var(--primary-color);
 }
 
