@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import newsletter from "../../assets/newsletter.jpg";
 import "./News.css";
-import { FaCross } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function News() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const formRef = useRef(null);
+  const [isVoucherVisible, setIsVoucherVisible] = useState(false);
 
   const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
-    // Open the modal after 5 seconds
     const timer = setTimeout(() => {
       setIsModalOpen(true);
     }, 5000);
@@ -72,7 +72,7 @@ function News() {
               data-modal-close
               onClick={closeModal}
             >
-              <FaCross name="close-outline" size={10} />
+              <FaTimes name="close-outline" size={10} />
             </button>
 
             <div className="newsletter-img">

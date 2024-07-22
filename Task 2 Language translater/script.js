@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const darkModeToggle = document.getElementById('dark-mode-btn');
   const body = document.body;
 
-  // Elements for input and output text areas and character count
+// Elements for input and output text areas and character count
   const inputTextArea = document.getElementById('input-text');
   const outputTextArea = document.getElementById('output-text');
   const inputChars = document.getElementById('input-chars');
 
-  // Element for language swap button
+ // Element for language swap button
   const swapLanguagesButton = document.querySelector('.swap-position');
 
   // Dropdown containers for language selection
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const uploadTitle = document.querySelector("#upload-title");
   const downloadBtn = document.querySelector("#download-btn");
 
-  // Toggle dark mode based on checkbox state
+  //  dark mode based on checkbox state
   darkModeToggle.addEventListener('change', () => {
     body.classList.toggle('dark', darkModeToggle.checked);
   });
@@ -37,14 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
     ul.innerHTML = ""; // Clear existing options
     options.forEach(option => {
       const li = document.createElement("li");
-      li.textContent = `${option.name} (${option.native})`; // Set display text
-      li.dataset.value = option.code; // Set data value for language code
+      li.textContent = `${option.name} (${option.native})`; 
+      li.dataset.value = option.code; // value for language code
       li.classList.add("option");
       ul.appendChild(li);
     });
   }
 
-  // Populate the input and output language dropdowns with language options
+// Populate the input and output language dropdowns with language options
   populateDropdown(inputLanguageDropdown, languages);
   populateDropdown(outputLanguageDropdown, languages);
 
@@ -59,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
         dropdown.querySelectorAll(".option").forEach(item => item.classList.remove("active"));
         item.classList.add("active"); // Highlight selected option
         const selected = dropdown.querySelector(".selected");
-        selected.textContent = item.textContent; // Set selected text
-        selected.dataset.value = item.dataset.value; // Set selected value
-        translate(); // Translate text after selecting a new option
+        selected.textContent = item.textContent; 
+        selected.dataset.value = item.dataset.value; 
+        translate(); 
       });
     });
   });
 
-  // Close dropdowns when clicking outside of them
+ // Close dropdowns when clicking outside of them
   document.addEventListener("click", (e) => {
     dropdowns.forEach(dropdown => {
       if (!dropdown.contains(e.target)) {
@@ -75,19 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Swap languages and text between input and output areas
+  //Swap languages and text between input and output areas
   swapLanguagesButton.addEventListener("click", () => {
     const inputLanguage = inputLanguageDropdown.querySelector(".selected");
     const outputLanguage = outputLanguageDropdown.querySelector(".selected");
-    // Swap language names and values
+    //Swap language names and values
     [inputLanguage.innerHTML, outputLanguage.innerHTML] = [outputLanguage.innerHTML, inputLanguage.innerHTML];
     [inputLanguage.dataset.value, outputLanguage.dataset.value] = [outputLanguage.dataset.value, inputLanguage.dataset.value];
-    // Swap text between input and output text areas
+    //Swap text between input and output text areas
     [inputTextArea.value, outputTextArea.value] = [outputTextArea.value, inputTextArea.value];
     translate(); // Translate text after swapping languages
   });
 
-  // Function to handle text translation
+ // Function to handle text translation
   function translate() {
     const inputText = inputTextArea.value;
     const inputLang = inputLanguageDropdown.querySelector(".selected").dataset.value;
@@ -99,13 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(url)
       .then(response => response.json())
       .then(json => {
-        // Update output text area with translated text
+      // Update output text area with translated text
         outputTextArea.value = json[0].map(item => item[0]).join("");
       })
       .catch(error => console.error(error)); // Handle errors
   }
 
-  // Limit input to 5000 characters and trigger translation
+ // Limit input to 5000 characters and trigger translation
   inputTextArea.addEventListener("input", () => {
     if (inputTextArea.value.length > 5000) {
       inputTextArea.value = inputTextArea.value.slice(0, 5000); // Limit text length
@@ -118,15 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const file = e.target.files[0];
     const validTypes = ["application/pdf", "text/plain", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
     if (validTypes.includes(file.type)) {
-      uploadTitle.textContent = file.name; // Update upload title with file name
+      uploadTitle.textContent = file.name; 
       const reader = new FileReader();
-      reader.readAsText(file); // Read file content as text
+      reader.readAsText(file); 
       reader.onload = (e) => {
-        inputTextArea.value = e.target.result; // Set input text area with file content
-        translate(); // Translate text after uploading a file
+        inputTextArea.value = e.target.result; 
+        translate(); 
       };
     } else {
-      alert("Please upload a valid file"); // Alert if file type is invalid
+      alert("Please upload a valid file"); 
     }
   });
 
